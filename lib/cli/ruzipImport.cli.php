@@ -57,10 +57,11 @@ class ruzipImportCli extends waCliController
                 if($find_region == 'Северная Осетия-Алания Республика')
                     $find_region = 'Северная Осетия-Алания';
 
-                if($row['AUTONOM'] == 'Ханты-Мансийский-Югра автономный округ')
+                if($row['AUTONOM'] == 'Ханты-Мансийский-Югра Автономный Округ') {
                     $find_region = $row['AUTONOM'];
+                }
 
-                $wa_region = $this->Region->getByField(['country_iso3'=>'rus', 'name'=>$find_region]);
+                $wa_region = $this->Region->getByField(array('country_iso3'=>'rus', 'name'=>$find_region));
                 
                 if(empty($wa_region) && ($find_region == 'Крым Республика')) {
                     $wa_region['code'] = 91;
